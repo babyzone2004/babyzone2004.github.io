@@ -425,7 +425,7 @@
 <div class="viewport-stable_border"></div>
 
 <script type="application/javascript">
-
+Telegram.WebApp.expand();
     /*
      * This is a demo code for Telegram WebApp for Bots
      * It contains basic examples of how to use the API
@@ -440,7 +440,7 @@
         init(options) {
             document.body.style.visibility = '';
             Telegram.WebApp.ready();
-            Telegram.WebApp.expand();
+            
             Telegram.WebApp.MainButton.setParams({
                 text      : 'CLOSE WEBVIEW',
                 is_visible: true
