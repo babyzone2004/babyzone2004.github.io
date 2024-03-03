@@ -12,12 +12,13 @@
 <script type="text/javascript">
     const colorPicker = new iro.ColorPicker('#picker', {
         borderColor: "#ffffff",
-        borderWidth: 5,
+        borderWidth: 1,
         width: Math.round(document.documentElement.clientWidth / 2),
     });
     colorPicker.on('color:change', function (color) {
         document.body.style.background = color.hexString;
     });
+    alert(1)
     Telegram.WebApp.expand();
 </script>
 <body style="background-color: #ffffff">
