@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="MobileOptimized" content="176"/>
+    <meta name="HandheldFriendly" content="True"/>
+    <meta name="robots" content="noindex,nofollow"/>
+    <title></title>
+    <script src="https://telegram.org/js/telegram-web-app.js?1"></script>
+    <script>
+        function setThemeClass() {
+            document.documentElement.className = Telegram.WebApp.colorScheme;
+        }
+
+        Telegram.WebApp.onEvent('themeChanged', setThemeClass);
+        setThemeClass();
+    </script>
+    <style>
+        html{
+            background: red;
+            /* height: var(--tg-viewport-height); */
+            overflow: auto;
+        }
+        body{
+            display: grid;
+            grid-template-rows: auto min-content;
+            padding: 0;
+            margin: 0;
+            border: 1px solid #fff;
+            height: var(--tg-viewport-height);
+            box-sizing: border-box;
+            background: #333;
+        }
+        .main{
+            height: calc(var(--tg-viewport-stable-height) - 100px);
+            background: #666;
+        }
+        .second{
+            height:  100px;
+            background: green;
+        }
+        input{
+            border: 1px solid #333;
+            padding: 5px;
+            width: 80%;
+
+        }
+    </style>
+</head>
+
+<body >
+    <section class="main">
+        
+    </section>
+<section id="top_sect" class="second">
+    <input type="text" placeholder="Input text in regular input..." id="regular_field"/>
+</section>
+
+<div class="viewport-border"></div>
+<div class="viewport-stable_border"></div>
+<script>
+    document.getElementById('regular_field').addEventListener('blur', function (e) {
+        window.scrollTo(0,0)
+    });
+</script>
+
+</body>
+</html>
