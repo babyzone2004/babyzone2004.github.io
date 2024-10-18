@@ -1,4 +1,4 @@
-import { user } from '../models/user';
+// import { user } from '../models/user';
 /**
  * 所有页面的全局方法
  * @param options
@@ -10,13 +10,13 @@ const CustomPage: WechatMiniprogram.Page.Constructor = function (options) {
       onShareAppMessage () {
         return {
           title: '球费AA小助手',
-          path: `pages/index/index?shareUid=${user.uid}`,
+          path: `pages/index/index`,
           // 长宽比是 5:4
           imageUrl: '/images/share.jpg'
         };
       },
       onShareTimeline () {
-        const query = `shareUid=${user.uid}`;
+        const query = `shareUid=0`;
         console.log('query', query);
         return {
           title: '球费AA小助手',

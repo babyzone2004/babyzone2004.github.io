@@ -5,7 +5,7 @@
     "include": []
   },
   "miniprogramRoot": "miniprogram/",
-  "compileType": "game",
+  "compileType": "miniprogram",
   "projectname": "ts-sass-demo",
   "setting": {
     "useCompilerPlugins": [
@@ -30,7 +30,7 @@
   "simulatorPluginLibVersion": {},
   "condition": {},
   "srcMiniprogramRoot": "miniprogram/",
-  "appid": "wx305c15a59b70d8dd",
+  "appid": "wxd519429b6e2d0d74",
   "libVersion": "2.30.3",
   "editorSetting": {
     "tabIndent": "insertSpaces",
