@@ -1,0 +1,135 @@
+
+<view class="container">
+  <view class="profile">
+    <view class="avatar-wrp">
+      <view class="avatar">
+        <image src="{{ avatarUrl }}"></image>
+      </view>
+      <view class="user">
+        <view class="user-name">{{userInfo.userName || '微信用户'}}</view>
+        <view class="userid">ID: {{userInfo.uid}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="weui-panel">
+    <view class="weui-panel__bd">
+      <view class="weui-media-box weui-media-box_small-appmsg">
+        <view class="weui-cells weui-cells_in-small-appmsg">
+          <view url="" class="weui-cell weui-cell_example weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell__hd">
+              <image class="mine-icon" src="/images/remain3.svg"></image>
+            </view>
+            <view class="weui-cell__bd weui-cell_primary">
+              <view class="task-con">
+                账号余额: {{userInfo.amount}}次数
+              </view>
+            </view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="weui-panel" wx:if="{{false}}">
+  <!-- <view class="weui-panel" wx:if="{{isIOS}}"> -->
+    <view class="weui-panel__bd">
+      <view class="weui-media-box weui-media-box_small-appmsg">
+        <view class="weui-cells weui-cells_in-small-appmsg">
+          <view bindtap="pay" url="" class="weui-cell weui-cell_example weui-cell_access"
+            hover-class="weui-cell_active">
+            <view class="weui-cell__hd">
+              <image class="mine-icon" src="/images/vip-fill.svg"></image>
+            </view>
+            <view class="weui-cell__bd weui-cell_primary">
+              <view class="task-con">
+                {{userInfo.chargeTip}}
+              </view>
+            </view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="weui-panel" wx:if="{{isIOS}}">
+    <!-- <view class="weui-panel" wx:if="{{isIOS}}"> -->
+      <!-- <view class="weui-panel__bd">
+        <view class="weui-media-box weui-media-box_small-appmsg">
+          <view class="weui-cells weui-cells_in-small-appmsg">
+            <view bindtap="payIOS" url="" class="weui-cell weui-cell_example weui-cell_access"
+              hover-class="weui-cell_active">
+              <view class="weui-cell__hd">
+                <image class="mine-icon" src="/images/vip-fill.svg"></image>
+              </view>
+              <view class="weui-cell__bd weui-cell_primary">
+                <view class="task-con">
+                  {{userInfo.chargeTip}}
+                </view>
+                <view wx:if="{{vipStatus != 1}}" class="task-con">
+                  0.01元享10次对话
+                </view>
+                <view wx:else class="task-con">
+                  VIP会员用户
+                  <view class="vip-expire">{{expiredAt}}天后到期</view>
+                </view>
+              </view>
+              <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+          </view>
+        </view>
+      </view> -->
+    </view>
+
+  <view class="weui-panel">
+    <view class="weui-panel__hd">做任务获取额度</view>
+    <view class="weui-panel__bd">
+      <view class="weui-media-box weui-media-box_small-appmsg">
+        <view class="weui-cells weui-cells_in-small-appmsg">
+          <view url="" class="weui-cell weui-cell_example weui-cell_access" hover-class="weui-cell_active"
+          wx:for="{{ taskList }}" wx:key="key" bindtap="taskTap" data-task="{{item.task}}">
+            <view class="weui-cell__hd">
+              <mp-icon wx:if="{{item.icon}}" icon="{{item.icon}}" color="var(--blue)" size="26"></mp-icon>
+              <image wx:else class="mine-icon" src="{{item.iconUrl}}"></image>
+            </view>
+            <view class="weui-cell__bd weui-cell_primary">
+              <view class="task-con">
+                <view class="task-desc">
+                  {{item.desc}}
+                </view>
+                <view class="task-title">
+                  {{item.title}}
+                </view>
+              </view>
+            </view>
+            <view class="weui-cell__ft weui-cell__ft_in-access">
+              {{item.progress}}{{item.amount}}
+            </view>
+            <button wx:if="{{item.task === 'share'}}" class="share" size="default" open-type="share" style="width: 100%;"  bindtap="taskTap" data-task="{{item.task}}"></button>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- <official-account></official-account> -->
+  </view>
+  <!-- <view class="weui-panel">
+    <view class="weui-panel__bd">
+      <view class="weui-media-box weui-media-box_small-appmsg">
+        <view class="weui-cells weui-cells_in-small-appmsg">
+          <view url="" class="weui-cell weui-cell_example weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell__hd">
+              <image class="mine-icon" src="/images/contact.svg"></image>
+            </view>
+            <view class="weui-cell__bd weui-cell_primary">
+              <button class="contact" open-type="contact" bindcontact="handleContact">联系客服</button>
+            </view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view> -->
+  <include src="QRcode.wxml"/>
+</view>

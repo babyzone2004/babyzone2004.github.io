@@ -1,0 +1,16 @@
+{
+  "name": "miniprogram",
+  "version": "1.0.0",
+  "description": "球费AA小助手，球费AA小助手，快速计算分摊球费",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "miniprogram-computed": "^4.4.0",
+    "westore": "^0.1.10-0",
+    "wxml-to-canvas": "^1.1.1"
+  }
+}

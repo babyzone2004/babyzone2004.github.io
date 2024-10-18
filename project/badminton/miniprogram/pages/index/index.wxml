@@ -1,0 +1,39 @@
+<!--index.wxml-->
+<view class="container page" data-weui-theme="{{theme}}">
+<mp-form-page title="球费AA小助手" subtitle="">
+    <mp-form id="form" rules="{{rules}}" models="{{formData}}">
+        <mp-cells title="" footer="">
+            <label>
+                <mp-cell prop="name" title="场地费" ext-class="">
+                    <input bindinput="formInputChange" type="number" data-field="name" class="weui-input" placeholder="请输入场地费" value="{{courtFee}}" bindinput="handleCourtFeeInput" />
+                </mp-cell>
+            </label>
+            <label>
+                <mp-cell prop="qq" title="球费" ext-class="">
+                    <input bindinput="handleBallFeeInput" type="number" data-field="qq" class="weui-input" placeholder="请输入球费" value="{{ballFee}}" />
+                </mp-cell>
+            </label>
+            <label>
+                <mp-cell prop="mobile" title="总人数" ext-class=" weui-cell_vcode">
+                    <input bindinput="handleTotalPeopleInput" type="number" data-field="mobile" class="weui-input" placeholder="请输入总人数" value="{{totalPeople}}" />
+                </mp-cell>
+            </label>
+            <label>
+                
+            </label>
+        </mp-cells>
+        <mp-cells title="女生是否少A费用?">
+          <mp-cell title="是否少A" ext-class="" style="width: 300px">
+              <switch slot="footer" bindchange="onSwitchHandler"  checked="{{femaleDiscountEnabled}}" />
+          </mp-cell>
+          <mp-cell wx:if="{{femaleDiscountEnabled}}" prop="mobile" title="女生人数" ext-class="weui-cell_vcode">
+              <input bindinput="handleFemaleCountInput" type="number" data-field="mobile" class="weui-input" placeholder="请输入参与的女生人数" value="{{femaleCount}}" />
+          </mp-cell>
+          <mp-cell wx:if="{{femaleDiscountEnabled}}" prop="mobile" type="number" title="少A金额" ext-class="weui-cell_vcode">
+              <input bindinput="handleFemaleDiscountInput" type="number" data-field="mobile" class="weui-input" placeholder="请输入人均少A的金额"  value="{{discountPerFemale}}" />
+          </mp-cell>
+      </mp-cells>
+        <button class="weui-btn weui-btn_primary" bindtap="calculateShare" style="margin-top:24px">计算分摊费用</button>
+    </mp-form>
+    </mp-form-page>
+</view>

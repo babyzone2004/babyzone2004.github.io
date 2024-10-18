@@ -1,0 +1,18 @@
+
+<mp-halfScreenDialog show="{{showQrcode}}">
+  <view slot="title">长按二维码加群</view>
+  <view slot="desc">
+    <image class="qrcode" src="./qrcode.png" show-menu-by-longpress="{{true}}"></image>
+  </view>
+</mp-halfScreenDialog>
+
+<mp-halfScreenDialog show="{{showGhQrcode}}">
+  <view slot="title">关注公众号支付</view>
+  <view slot="desc">
+    <image class="qrcode" src="./qrcode_for_gh.jpg" show-menu-by-longpress="{{true}}"></image>
+    <view style="text-align: center;">
+      长按识别二维码，关注“威尔登极客团队公众号”
+      <view>点击-演示系统-会员充值</view>
+    </view>
+  </view>
+</mp-halfScreenDialog>

@@ -1,0 +1,35 @@
+@import '../../common/common';
+
+page{
+  background: #fff;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+}
+
+.weui-form{
+  padding-top: 16px
+}
+.weui-form__control-area{
+  margin-top: 12px
+}
+.weui-btn_primary{
+  padding: 22rpx;
+  border: none;
+  border-radius: 18rpx;
+  text-align: center;
+  color: #fff;
+  background-image: linear-gradient( 135deg, #007aff 0%, #007aff 100%);
+}
+.weui-cell__hd{
+  // width: 150px;
+}
+.weui-label{
+  max-width: 150px;
+  width: 150px;
+  word-wrap: normal;
+  word-break: normal;
+}

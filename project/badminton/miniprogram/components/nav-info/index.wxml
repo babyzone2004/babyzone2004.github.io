@@ -1,0 +1,10 @@
+<view class="nav-info">
+  <view class="nav-info-list">
+    <image class="nav-info-list-img" src="/images/remain3.svg"></image>
+    <view>次数 {{amount}} 次</view>
+  </view>
+  <view class="nav-info-list" bindtap="navToMinePage">
+    <image class="nav-info-list-img" src="/images/sign2.svg"></image>
+    <view>免费领次数</view>
+  </view>
+</view>

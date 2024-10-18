@@ -1,0 +1,20 @@
+//nav-info
+.nav-info {
+  display: flex;
+  align-items: center;
+  padding: 18rpx;
+  font-size: 26rpx;
+}
+
+.nav-info-list{
+  display: flex;
+  align-items: center;
+  margin-right: 36rpx;
+}
+
+.nav-info-list-img {
+  display: inline-block;
+  margin-right: 4rpx;
+  width: 40rpx;
+  height: 40rpx;
+}

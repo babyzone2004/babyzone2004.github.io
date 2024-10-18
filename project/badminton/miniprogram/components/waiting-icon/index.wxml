@@ -1,0 +1,5 @@
+<view class="loading">
+  <view class="loading-icon">.</view>
+  <view class="loading-icon ani1">.</view>
+  <view class="loading-icon ani2">.</view>
+</view>

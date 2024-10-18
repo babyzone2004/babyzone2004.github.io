@@ -1,0 +1,24 @@
+{
+  "description": "羽毛球小助手",
+  "projectname": "star",
+  "setting": {
+    "compileHotReLoad": true,
+    "urlCheck": false,
+    "useIsolateContext": false,
+    "preloadBackgroundData": false
+  },
+  "libVersion": "3.6.2",
+  "condition": {
+    "miniprogram": {
+      "list": [
+        {
+          "name": "",
+          "pathName": "pages/scences/index",
+          "query": "title=123&placeholder=qe&tips=ert",
+          "launchMode": "default",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

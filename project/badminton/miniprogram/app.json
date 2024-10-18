@@ -1,0 +1,21 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/receipt/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "navigationBarTitleText": "球费AA小助手",
+    "handleWebviewPreload": "auto",
+    "renderingMode": "seperated",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#ededed"
+  },
+  "style": "v2",
+  "useExtendedLib": {
+    "weui": true
+  },
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

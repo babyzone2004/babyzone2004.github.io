@@ -1,0 +1,10 @@
+<view class="chat-section {{ inversion? 'chat-user-section' : '' }}">
+  <view class="avatar" wx:if="{{isShowAvatar}}">
+    <image class="avatar-img" src="{{ inversion? userAvatar : botAvatar }}"></image>
+  </view>
+  <view class="chat-con my-class">
+    <view style="margin: 22rpx 0; min-height: 42rpx;">
+      <slot></slot>
+    </view>
+  </view>
+</view>

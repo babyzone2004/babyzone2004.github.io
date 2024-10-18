@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "waiting-icon": "/components/waiting-icon/index"
+  }
+}
