@@ -1,5 +1,5 @@
 <view class="container page" data-weui-theme="{{theme}}">
-    <mp-form-page title="球费AA小助手" subtitle="">
+    <mp-form-page title="球费AA助手" subtitle="">
         <mp-form id="form" rules="{{rules}}" models="{{formData}}">
             <mp-cells title="" footer="">
                 <label>
@@ -33,7 +33,7 @@
                 </mp-cell>
             </mp-cells>
             
-            <button class="weui-btn weui-btn_primary" bindtap="calculateShare" style="margin-top:24px">计算分摊费用</button>
+            <button class="weui-btn weui-btn_primary" bindtap="calculateShare" style="margin-top:24px">计算AA费用</button>
         </mp-form>
     </mp-form-page>
 </view>

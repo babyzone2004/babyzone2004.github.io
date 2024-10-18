@@ -1,7 +1,7 @@
 {
   "name": "miniprogram",
   "version": "1.0.0",
-  "description": "球费AA小助手，球费AA小助手，快速计算分摊球费",
+  "description": "球费AA助手，快速计算分摊球费",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

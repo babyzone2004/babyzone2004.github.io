@@ -6,7 +6,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#FFFFFF",
-    "navigationBarTitleText": "球费AA小助手",
+    "navigationBarTitleText": "球费AA助手",
     "handleWebviewPreload": "auto",
     "renderingMode": "seperated",
     "navigationBarTextStyle": "black",

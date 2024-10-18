@@ -7,7 +7,7 @@
     "useIsolateContext": false,
     "preloadBackgroundData": false
   },
-  "libVersion": "3.6.2",
+  "libVersion": "3.6.1",
   "condition": {
     "miniprogram": {
       "list": [

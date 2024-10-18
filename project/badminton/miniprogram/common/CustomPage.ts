@@ -9,7 +9,7 @@ const CustomPage: WechatMiniprogram.Page.Constructor = function (options) {
     Object.assign({}, {
       onShareAppMessage () {
         return {
-          title: '球费AA小助手',
+          title: '球费AA助手',
           path: `pages/index/index`,
           // 长宽比是 5:4
           imageUrl: '/images/share.jpg'
@@ -19,7 +19,7 @@ const CustomPage: WechatMiniprogram.Page.Constructor = function (options) {
         const query = `shareUid=0`;
         console.log('query', query);
         return {
-          title: '球费AA小助手',
+          title: '球费AA助手',
           query: query,
           // 长宽比是 1:1
           imageUrl: '/images/share.jpg'

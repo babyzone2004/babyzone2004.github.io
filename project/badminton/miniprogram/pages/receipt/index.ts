@@ -14,7 +14,8 @@ CustomPage({
     discountPerFemale: '',
     maleShare: 0,
     femaleShare: 0,
-    wxml: ''
+    wxml: '',
+    femaleDiscountEnabled: false
   },
 
   onLoad(options: any) {
@@ -22,7 +23,9 @@ CustomPage({
     this.setData({
       ...receiptData
     });
-    this.setData({wxml: `
+    let wxml;
+    if(this.data.femaleDiscountEnabled) {
+      wxml = `
       <view class="card">
           <view class="card-header">
             <text class="title">AA费用清单</text>
@@ -64,11 +67,46 @@ CustomPage({
             </view>
           </view>
         </view>
-      `})
+      `;
+    } else {
+      wxml = `
+      <view class="card">
+          <view class="card-header">
+            <text class="title">AA费用清单</text>
+          </view>
+          <view class="divider"></view>
+          <view class="card-content">
+            <view class="row">
+              <text class="label">场地费：</text>
+              <text class="value">${receiptData.courtFee} 元</text>
+            </view>
+            <view class="row">
+              <text class="label">球费：</text>
+              <text class="value">${receiptData.ballFee} 元</text>
+            </view>
+            <view class="row">
+              <text class="label">总共费用：</text>
+              <text class="value total">${receiptData.totalCost} 元</text>
+            </view>
+            <view class="row">
+              <text class="label">总人数：</text>
+              <text class="value">${receiptData.totalPeople} 人</text>
+            </view>
+            <view class="divider"></view>
+            <view class="row">
+              <text class="label highlight">人均：</text>
+              <text class="value highlight">${receiptData.maleShare} 元</text>
+            </view>
+          </view>
+        </view>
+      `;
+    }
+    this.setData({wxml: wxml})
   },
   copy () {
-    const receipt = `
--------------
+    let receipt;
+    if(this.data.femaleDiscountEnabled) {
+      receipt = `-------------
 AA费用清单
 -------------
 场地费：${this.data.courtFee}元
@@ -82,9 +120,19 @@ AA费用清单
 人均费用
 ---------
 男生：${this.data.maleShare}元
-女生：${this.data.femaleShare}元
+女生：${this.data.femaleShare}元`;
+    } else {
+      receipt = `-------------
+AA费用清单
+-------------
+场地费：${this.data.courtFee}元
+球费：${this.data.ballFee}元
+总共费用：${this.data.totalCost}元
+总人数：${this.data.totalPeople}人
+---------
+人均：${this.data.maleShare}元`;
+    }
 
-`;
     wx.setClipboardData({
       data: receipt,
       success: () => {
@@ -109,16 +157,8 @@ AA费用清单
       console.error('Component not found');
       return;
     }
-
-    wx.createSelectorQuery()
-  .select('#content') // 选择你想要绘制的元素
-  .boundingClientRect((rect) => {
-    if (rect.width === 0 || rect.height === 0) {
-      wx.showToast({
-        title: '元素宽高不能为0',
-        icon: 'none'
-      });
-      return;
+    if(!this.data.femaleDiscountEnabled) {
+      style.card.height = 300
     }
     wxml2canvas.renderToCanvas({ wxml: self.data.wxml, style }).then((res: any) => {
       return wxml2canvas.canvasToTempFilePath();
@@ -132,9 +172,7 @@ AA费用清单
         title: '生成图片失败',
         icon: 'none'
       });
-    });;
-  })
-  .exec();
+    });
   },
   saveAndShareImage(tempFilePath: any) {
     // wx.saveImageToPhotosAlbum({
@@ -157,6 +195,7 @@ AA费用清单
 
     wx.showShareMenu({
       withShareTicket: true,
+      menus: ['shareAppMessage', 'shareTimeline'],
       success: () => {
         wx.showShareImageMenu({
           path: tempFilePath,
@@ -171,3 +210,5 @@ AA费用清单
     });
   }
 });
+
+

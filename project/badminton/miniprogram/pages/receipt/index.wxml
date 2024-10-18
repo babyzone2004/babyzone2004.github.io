@@ -23,20 +23,24 @@
         <text class="label">总人数：</text>
         <text class="value">{{totalPeople}} 人</text>
       </view>
-      <view class="row">
+      <view wx:if="{{femaleDiscountEnabled}}" class="row">
         <text class="label">女生人数：</text>
         <text class="value">{{femaleCount}} 人</text>
       </view>
-      <view class="row">
+      <view wx:if="{{femaleDiscountEnabled}}" class="row">
         <text class="label">女生人均优惠：</text>
         <text class="value">{{discountPerFemale}} 元</text>
       </view>
       <view class="divider"></view>
-      <view class="row">
+      <view wx:if="{{!femaleDiscountEnabled}}" class="row">
+        <text class="label highlight">人均：</text>
+        <text class="value highlight">{{maleShare}} 元</text>
+      </view>
+      <view wx:if="{{femaleDiscountEnabled}}" class="row">
         <text class="label highlight">男生：</text>
         <text class="value highlight">{{maleShare}} 元</text>
       </view>
-      <view class="row">
+      <view wx:if="{{femaleDiscountEnabled}}" class="row">
         <text class="label highlight">女生：</text>
         <text class="value highlight">{{femaleShare}} 元</text>
       </view>

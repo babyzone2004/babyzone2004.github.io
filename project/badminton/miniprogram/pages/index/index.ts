@@ -1,9 +1,7 @@
 import CustomPage from '../../common/CustomPage';
-import controlerBehavior from '../../common/controlerBehavior';
 
 const app = getApp<IAppOption>();
 CustomPage({
-  behaviors: [controlerBehavior],
   data: {
     ...app.globalData,
     courtFee: wx.getStorageSync('courtFee') || '',
@@ -17,6 +15,10 @@ CustomPage({
   },
   onLoad () {
     console.log('index onLoad');
+    wx.showShareMenu({
+      withShareTicket: true,
+      menus: ['shareAppMessage', 'shareTimeline'],
+    });
   },
   onShow () {
     const self = this;
@@ -79,9 +81,9 @@ CustomPage({
       });
       return;
     }
-    if (totalPeople - femaleCount <= 0) {
+    if (totalPeople - femaleCount < 0) {
       wx.showToast({
-        title: '女生人数太多了？',
+        title: '女生人数太多啦？',
         icon: 'none'
       });
       return;
@@ -93,37 +95,22 @@ CustomPage({
     if (femaleDiscountEnabled && femaleCount > 0) {
       const totalmaleCountDiscount = maleCount * discountPerFemale;
       const sharedCost = (totalCost - totalmaleCountDiscount) / totalPeople;
-      maleShare = sharedCost + discountPerFemale;
-      const dis = maleShare / sharedCost;
-      if(dis > 2) {
-        wx.showModal({
-          title: '提示',
-          content: `男生支付费用超过了女生${dis.toFixed(1)}倍，真的要这么土豪吗？`,
-          success (res) {
-            if (res.confirm) {
-              console.log('用户点击确定')
-            } else if (res.cancel) {
-              return
-              console.log('用户点击取消')
-            }
-          }
-        })
-      }
-      this.generateReceiptPage(totalCost, courtFee, ballFee, totalPeople, femaleCount, discountPerFemale, maleShare, sharedCost);
+      maleShare = totalPeople - femaleCount === 0? 0 : sharedCost + discountPerFemale ;
+      this.generateReceiptPage(totalCost, courtFee, ballFee, totalPeople, femaleCount, discountPerFemale, maleShare, sharedCost, femaleDiscountEnabled);
       // this.setData({
       //   maleShare: maleShare.toFixed(1),
       //   femaleShare: sharedCost.toFixed(1)
       // });
     } else {
       maleShare = femaleShare = totalCost / totalPeople;
-      this.generateReceiptPage(totalCost, courtFee, ballFee, totalPeople, femaleCount, discountPerFemale, maleShare, femaleShare);
+      this.generateReceiptPage(totalCost, courtFee, ballFee, totalPeople, femaleCount, discountPerFemale, maleShare, femaleShare, femaleDiscountEnabled);
       // this.setData({
       //   maleShare: sharedCost.toFixed(1),
       //   femaleShare: sharedCost.toFixed(1)
       // });
     }
   },
-  generateReceiptPage(totalCost: number, courtFee: number, ballFee: number, totalPeople: number, femaleCount: number, discountPerFemale: number, maleShare: number, femaleShare: number) {
+  generateReceiptPage(totalCost: number, courtFee: number, ballFee: number, totalPeople: number, femaleCount: number, discountPerFemale: number, maleShare: number, femaleShare: number, femaleDiscountEnabled: boolean) {
     const receiptData = {
       courtFee: courtFee.toFixed(2),
       ballFee: ballFee.toFixed(2),
@@ -132,7 +119,8 @@ CustomPage({
       femaleCount,
       discountPerFemale: discountPerFemale.toFixed(2),
       maleShare: (Math.ceil(maleShare*100)/100).toFixed(2),
-      femaleShare: (Math.ceil(femaleShare*100)/100).toFixed(2)
+      femaleShare: (Math.ceil(femaleShare*100)/100).toFixed(2),
+      femaleDiscountEnabled: femaleDiscountEnabled
     };
     wx.navigateTo({
       url: '/pages/receipt/index?data=' + encodeURIComponent(JSON.stringify(receiptData))
